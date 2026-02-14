@@ -57,6 +57,40 @@ Best overall (balanced accuracy + MCC): Random Forest.
 
 ---
 
+## 📊 Model Performance Analysis & Observations
+
+### Logistic Regression
+- **Strength**: Achieved the highest AUC (0.984), indicating excellent ranking ability to separate fraud from legitimate transactions across thresholds.
+- **Trade-off**: High precision (0.947) but moderate recall (0.918); prioritizes avoiding false positives, which may miss some fraud cases.
+- **Insight**: Scales well with feature standardization; fast training makes it ideal for real-time deployment and baseline comparison.
+
+### Decision Tree
+- **Strength**: Highly interpretable rules; non-zero feature importances reveal which transaction attributes drive fraud decisions.
+- **Trade-off**: Moderate AUC (0.913) suggests the tree relies on fewer feature splits; prone to overfitting without careful depth tuning.
+- **Insight**: Useful for understanding fraud patterns and explaining decisions to stakeholders; however, less robust than ensemble methods on this imbalanced dataset.
+
+### K-Nearest Neighbors
+- **Strength**: Competitive AUC (0.952) and strong precision (0.943); memory-based approach captures local transaction patterns well.
+- **Trade-off**: Recall (0.847) is lower than tree-based models; sensitive to feature scaling and high-dimensional noise in PCA-transformed features.
+- **Insight**: Requires scaled input and careful k-tuning; computational cost grows with dataset size, limiting real-time scalability.
+
+### Naive Bayes (Gaussian)
+- **Strength**: Exceptionally fast training and highest precision (0.971); assumes feature independence which reduces overfitting on small fraud classes.
+- **Trade-off**: Lowest recall (0.694) and accuracy (0.838); independence assumption may not hold for correlated PCA features.
+- **Insight**: Best for low-latency scenarios where false positives carry high cost; feature engineering or alternative distributions (e.g., multinomial) may improve recall.
+
+### Random Forest
+- **Strength**: Best overall performance (94.92% accuracy, 0.978 AUC, 0.900 MCC); robust ensemble reduces variance and captures non-linear patterns effectively.
+- **Trade-off**: Less interpretable than single trees; requires more memory and training time for 100 estimators.
+- **Insight**: Reliable choice for production; feature importances show that Time and Amount are strong fraud indicators; handles imbalance better via bootstrap aggregating.
+
+### Gradient Boosting
+- **Strength**: Strong accuracy (0.919) and balanced metrics (F1: 0.919, MCC: 0.838); iterative error correction captures complex fraud signatures.
+- **Trade-off**: Slower training than Random Forest; prone to overfitting if learning rate and max depth are not tuned carefully.
+- **Insight**: Competitive with Random Forest but requires more hyperparameter tuning; beneficial when sequential model refinement is needed for marginal performance gains.
+
+---
+
 ## Files & structure
 
 ```

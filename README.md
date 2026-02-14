@@ -130,7 +130,7 @@ Open http://localhost:8501 in your browser.
 ## 🔗 Links & Resources
 
 - **GitHub Repository**: [(https://github.com/2025aa05022/ML_Assignment2_creditcard.git)]
-- **Live Application**: [()]
+- **Live Application**: [(https://creditcard2025aa05022.streamlit.app/)]
 - **Dataset Source**: [Kaggle Credit Card Fraud Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 - **Streamlit Documentation**: [streamlit.io](https://streamlit.io)
 
